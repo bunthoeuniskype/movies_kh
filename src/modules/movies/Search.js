@@ -8,7 +8,7 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { TMDB_URL, TMDB_API_KEY } from '../../constants/api';
+import { YOUTUBE_API_KEY, YOUTUBE_URL } from '../../constants/api';
 import * as moviesActions from './movies.actions';
 import CardThree from './components/CardThree';
 import styles from './styles/Search';
@@ -33,18 +33,25 @@ class Search extends Component {
 	}
 
 	_handleTextInput(event) {
+
 		const query = event.nativeEvent.text;
 		this.setState({ query });
 		if (!query) this.setState({ query: '' });
-
+		
 		setTimeout(() => {
 			if (query.length) {
 				this.props.actions.retrieveMoviesSearchResults(this.state.query, 1)
 				.then(() => {
-					const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
-					const dataSource = ds.cloneWithRows(this.props.searchResults.results);
+					const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });				
+					const dataSource = ds.cloneWithRows(this.props.searchResults.items);
+					const totalResults = this.props.searchResults.pageInfo.totalResults;
+					const resultsPerPage = this.props.searchResults.pageInfo.resultsPerPage; 	
+					const nextPage = this.props.searchResults.nextPageToken;							
 					this.setState({
+						nextPage,
 						dataSource,
+						totalResults,
+						resultsPerPage,
 						isLoading: false
 					});
 				});
@@ -52,32 +59,25 @@ class Search extends Component {
 		}, 500);
 	}
 
-	_retrieveNextPage() {
-		if (this.state.currentPage !== this.props.searchResults.total_pages) {
+	_retrieveNextPage() {		
+		totalItem = this.state.currentPage*this.state.resultsPerPage;				
+		if (totalItem < this.state.totalResults) {
 			this.setState({
 				currentPage: this.state.currentPage + 1
 			});
+		
+			nextPage = '&pageToken='+this.state.nextPage;
 
-			let page;
-			if (this.state.currentPage === 1) {
-				page = 2;
-				this.setState({ currentPage: 2 });
-			} else {
-				page = this.state.currentPage + 1;
-			}
-
-			axios.get(`${TMDB_URL}/search/movie/?api_key=${TMDB_API_KEY}&query=${this.state.query}&page=${page}`)
-				.then(res => {
+			this.props.actions.retrieveMoviesSearchResults(this.state.query, 1,nextPage)
+				.then(() => {
 					const data = this.state.searchResults.results;
-					const newData = res.data.results;
-
+					const newData = this.props.searchResults.items;
+					const nextPage = this.props.searchResults.nextPageToken;
 					newData.map((item, index) => data.push(item));
-
 					this.setState({
+						nextPage,
 						dataSource: this.state.dataSource.cloneWithRows(this.state.searchResults.results)
 					});
-				}).catch(err => {
-					console.log('next page', err); // eslint-disable-line
 				});
 		}
 	}
@@ -108,13 +108,13 @@ class Search extends Component {
 		}
 	}
 
-	_renderListView() {
+	_renderListView() {	
 		let listView;
 		if (this.state.query) {
 			listView = (
 				<ListView
-					enableEmptySections
 					onEndReached={type => this._retrieveNextPage()}
+					enableEmptySections					
 					onEndReachedThreshold={1200}
 					dataSource={this.state.dataSource}
 					renderRow={rowData => <CardThree info={rowData} viewMovie={this._viewMovie} />}
@@ -128,7 +128,7 @@ class Search extends Component {
 		return listView;
 	}
 
-	render() {
+	render() {	
 		return (
 			<View style={styles.container}>
 				<View style={styles.searchbox}>

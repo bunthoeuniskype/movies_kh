@@ -27,9 +27,10 @@ class Drawer extends Component {
 	}
 
 	_goToMovies() {
+		console.warn('working');
 		this._toggleDrawer();
-		this.props.navigator.popToRoot({
-			screen: 'movieapp.Movies'
+		this.props.navigator.push({
+			screen: 'movieapp.MoviesList'
 		});
 	}
 

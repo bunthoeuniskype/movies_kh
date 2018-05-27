@@ -126,7 +126,7 @@ class Movies extends Component {
 		const iconUp = <Icon name="md-recording" size={21} color="#9F9F9F" style={{ width: 22 }} />;
 
 		return (
-			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
+			//this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
 			<ScrollView
 				style={styles.container}
 				refreshControl={
@@ -140,15 +140,7 @@ class Movies extends Component {
 						progressBackgroundColor="white"
 					/>
 				}>
-				<Swiper
-					autoplay
-					autoplayTimeout={4}
-					showsPagination={false}
-					height={248}>
-					{nowPlayingMovies.results.map(info => (
-						<CardOne key={info.id} info={info} viewMovie={this._viewMovie} />
-					))}
-				</Swiper>
+				
 				<View>
 					<View style={styles.listHeading}>
 						<Text style={styles.listHeadingLeft}>Popular</Text>
@@ -160,11 +152,7 @@ class Movies extends Component {
 							</Text>
 						</TouchableOpacity>
 					</View>
-					<ScrollView horizontal showsHorizontalScrollIndicator={false}>
-						{popularMovies.results.map(info => (
-							<CardTwo key={info.id} info={info} viewMovie={this._viewMovie} />
-						))}
-					</ScrollView>
+					
 					<View style={styles.browseList}>
 						<TouchableOpacity activeOpacity={0.7}>
 							<View style={styles.browseListItem}>

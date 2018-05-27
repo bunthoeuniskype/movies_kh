@@ -39,12 +39,20 @@ class MoviesList extends Component {
 	}
 
 	_retrieveMoviesList(isRefreshed) {
-		this.props.actions.retrieveMoviesList(this.props.type, this.state.currentPage)
+		playListId = 'PLCnG-ZN6AyUipX2qhRBYZT-aZeNWosDRi';
+		this.props.actions.retrieveMoviesList(this.props.type, this.state.currentPage,playListId)
 			.then(() => {
-				const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
-				const dataSource = ds.cloneWithRows(this.props.list.results);
+				const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });				
+				const dataSource = ds.cloneWithRows(this.props.list.items);
+				const totalResults = this.props.list.pageInfo.totalResults;
+  				const resultsPerPage = this.props.list.pageInfo.resultsPerPage;
+  				const nextPageToken = this.props.list.nextPage;
+  				// console.warn(JSON.stringify(this.props.list.items));
 				this.setState({
-					list: this.props.list,
+					nextPageToken,
+					totalResults,
+					resultsPerPage,
+					list: this.props.list.items,
 					dataSource,
 					isLoading: false
 				});
@@ -53,35 +61,28 @@ class MoviesList extends Component {
 	}
 
 	_retrieveNextPage(type) {
-		if (this.state.currentPage !== this.props.list.total_pages) {
+		totalItem = this.state.currentPage*this.state.resultsPerPage;				
+		if (totalItem < this.state.totalResults) {
 			this.setState({
 				currentPage: this.state.currentPage + 1
 			});
-
-			let page;
-			if (this.state.currentPage === 1) {
-				page = 2;
-				this.setState({ currentPage: 2 });
-			} else {
-				page = this.state.currentPage + 1;
-			}
-
-			axios.get(`${TMDB_URL}/movie/${type}?api_key=${TMDB_API_KEY}&page=${page}`)
-				.then(res => {
+		
+			nextPage = '&pageToken='+this.state.nextPage;
+			playListId = 'PLCnG-ZN6AyUipX2qhRBYZT-aZeNWosDRi';
+			this.props.actions.retrieveMoviesList(this.props.type, 1,playListId,nextPage)
+				.then(() => {
 					const data = this.state.list.results;
-					const newData = res.data.results;
-
+					const newData = this.props.list.items;
+					const nextPage = this.props.list.nextPageToken;
 					newData.map((item, index) => data.push(item));
-
 					this.setState({
+						nextPage,
 						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
 					});
-				}).catch(err => {
-					console.log('next page', err); // eslint-disable-line
 				});
+			}
 		}
-	}
-
+	
 	_viewMovie(movieId) {
 		this.props.navigator.showModal({
 			screen: 'movieapp.Movie',
@@ -114,12 +115,13 @@ class MoviesList extends Component {
 	}
 
 	render() {
+	
 		return (
 			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
 			<ListView
 				style={styles.container}
-				enableEmptySections
-				onEndReached={type => this._retrieveNextPage(this.props.type)}
+				enableEmptySections			
+				onEndReached={type => this._retrieveNextPage(this.props.type)}	
 				onEndReachedThreshold={1200}
 				dataSource={this.state.dataSource}
 				renderRow={rowData => <CardThree info={rowData} viewMovie={this._viewMovie} />}
@@ -144,7 +146,7 @@ class MoviesList extends Component {
 MoviesList.propTypes = {
 	actions: PropTypes.object.isRequired,
 	list: PropTypes.object.isRequired,
-	type: PropTypes.string.isRequired,
+	//type: PropTypes.string.isRequired,
 	navigator: PropTypes.object
 };
 

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu-toolbar\1.5.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="55d7bf547c88cb7c8c7c5cdbf3b06dd66c9750f8">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.balysv.materialmenu-material-menu-toolbar-1.5.4_14f51c120ae6e91411b63f63566fdf2977151116.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\design\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-design-25.3.1_b388f8cdfcc3d354fe6a8a3cacdb4ff1e03794e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0_d18454b059298d2383435e52d0a1a9a072605d90.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.balysv.materialmenu\material-menu\1.5.4\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="1f6ff1728c297524e82b875ce2dfda946f4bca41">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.balysv.materialmenu-material-menu-1.5.4_80d0c88e3d335eb9d11701e50c9893bd9a63e6ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.44.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="af9665a44df26b4098e24c934c1109507845ef5e">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.react-react-native-0.44.0_ee7e2e89268a0a848cccfd21e6f82886279e2d8e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0_d15efd2696fed552884f7070f6faaa0eb61e5b8c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-25.3.1_26b66fa241d5c1f2384b3403a9de7831ae947ac4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\library-2.4.0_b5226a4e5815100672f478fd10335a6761e259c9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\movieapp\react-native-navigation\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3639244c09e4bd5829752cdb94460003eb491071">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\movieapp-react-native-navigation-unspecified_4955e379b1efac312dd9aa1e593f7c87fde42dab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fbui.textlayoutbuilder\textlayoutbuilder\1.0.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_11793fa78ecc6608dfe2628c96bcdfe305fbe003.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-25.3.1_492272a962b5024de4069c5a533949c4cf182008.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d9c4402c3057225d80cbbbec52154e7a25b0ebdf">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-1.0.1_0f5ffe87483ff6aa6b9ad7724fcffb6c82236a54.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\movieapp\react-native-config\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ed4df09b8b822429565b8f4e44a35422bdab0c32">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\movieapp-react-native-config-unspecified_a889599a8e9629f582b9662553617f1167b3c837.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.facebook.fbui.textlayoutbuilder\staticlayout-proxy\1.0\f162442a19fff13995fbd51ba414d9ee05579080\staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\staticlayout-proxy-1.0_5ee6b626337eb26982b6e74e9b7f25236e1e8574.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-25.3.1_3ae42b91f17bb3247f70fb2ea9930baf297979d7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.soloader\soloader\0.1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.soloader-soloader-0.1.0_bd5a2796457ead6e362d7f6ebfa9b1f83f269a78.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1_2005a2849ef04324793b8d2bc3cfbd4bd84d9030.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_a2980b1ca2710f154844dab4bfafacf682539808.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.3.1\support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\support-annotations-25.3.1_8ce6ba2f60eccdd23e30bb926f5ae9fd5626a937.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.44.0\jars\libs\infer-annotations-1.5.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="dcac634e137395f79693ec760f081a86eb2bd84e">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\infer-annotations-1.5_43052a2d95506c0a54f2eae2b4c56b4f0f1a6ecc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.4.1\8ace66ef7002d98f633377c9e67daeeb196d8c3b\okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.4.1_bc4eeffe27c6db88c4f272b3e58904b072a33694.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-okhttp3\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ba9b39366b723ccff6359d1117332968e98a4aca">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-okhttp3-1.0.1_930fb91a70f6ee7b3f6dd2e00acc9525aafdb905.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\javax.inject-1_1b7b4bd944f56f2d63375d56431338482c593079.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-base-1.0.1_4f007f9ee7908e2efb103129745a1dab1cb8203c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\movieapp\react-native-vector-icons\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f2cf527de8d0bd35d72088fafea02395ba4a9eec">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\movieapp-react-native-vector-icons-unspecified_ee6e777ef46f199ddea4312cf870f1a3c00206b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1_41a45f67e2a7ca13b37a20aa653cfdfb2f829cdc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-25.3.1_15a40e3c93d3d63202858e51f0bd22666709472c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-25.3.1_7d34c5bf50e7b19f161893ffada3546071283fb8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-drawee-1.0.1_11d18a2571d125c1da654843548e6d8c452585b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="cf836a435a496eb22ff2aa69aa1e619462549f81">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fresco-1.0.1_b752c28e6f4fd4dda254be0936b14161010a9b1d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="2668e49e4e31c7d451b76a36009b902bf44e0d70">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fbcore-1.0.1_2b8348baf096db227da673325a9fedeac9019630.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-25.3.1_fc2d04bd7168b13ed4a93bf30f332b5b09f4e9dd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-25.3.1_86e2fdb84bb5de77bbe18f6891b6e6177f3a92a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-25.3.1_d1587642e7fa696ba68aa7f8b397ead4b363351a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-25.3.1_3a11db7c489f4f3f14818a02e974c122c1d613ca.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\transition\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-transition-25.3.1_f04cb37568a293d2faef52e1c103ca6ec088602a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-25.3.1_c63e5c81aa3206c1fb6404e7211a4de134a44f1d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\com.aurelhubert\ahbottomnavigation\2.0.6\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c8ba41bea7f78f8bdf3a803b9d08eb3fff416706">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\com.aurelhubert-ahbottomnavigation-2.0.6_191d8fd0e0963c4f1f83e92489576f04f1922e93.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\exploded-aar\movieapp\react-native-linear-gradient\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="10bce3308649051968a5a024ca15a2193838eed4">
+        <dex dex="C:\Users\bunthoeun\Desktop\VSCodePortable_1.8.1\movies_kh\android\app\build\intermediates\pre-dexed\debug\movieapp-react-native-linear-gradient-unspecified_69e97539e9819d9aef791df1181a759f75c168b9.jar" />
+    </item>
+
+</items>

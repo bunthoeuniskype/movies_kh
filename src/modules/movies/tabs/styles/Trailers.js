@@ -22,7 +22,12 @@ const styles = StyleSheet.create({
 		fontWeight: '500',
 		fontSize: 13,
 		marginLeft: 10
-	}
+	},
+	cardDescription: {
+		color: '#636363',
+		fontSize: 13,
+		marginTop: 5
+	},
 });
 
 export default styles;

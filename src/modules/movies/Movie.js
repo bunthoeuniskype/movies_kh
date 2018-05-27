@@ -21,8 +21,9 @@ import Casts from './tabs/Casts';
 import DefaultTabBar from '../_global/scrollableTabView/DefaultTabBar';
 import Info from './tabs/Info';
 import ProgressBar from '../_global/ProgressBar';
-import Trailers from './tabs/Trailers';
+import Related from './tabs/Related';
 import styles from './styles/Movie';
+import CardOne from './components/CardOne';
 import { TMDB_IMG_URL, YOUTUBE_API_KEY, YOUTUBE_URL } from '../../constants/api';
 
 class Movie extends Component {
@@ -52,18 +53,18 @@ class Movie extends Component {
 	}
 
 	componentWillMount() {
-		this._retrieveDetails();
+		this._retrieveDetails();	
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.details) this.setState({ isLoading: false });
 	}
 
-	_retrieveDetails(isRefreshed) {
+	_retrieveDetails(isRefreshed) {			
 		this.props.actions.retrieveMovieDetails(this.props.movieId)
 			.then(() => {
-				this._retrieveYoutubeDetails();
-			});
+				this._retrieveYoutubeDetails();				
+			});	
 		if (isRefreshed && this.setState({ isRefreshing: false }));
 	}
 
@@ -108,18 +109,10 @@ class Movie extends Component {
 		if (tabName === 'trailers') this.setState({ trailersTabHeight: height });
 	}
 
-	_retrieveYoutubeDetails() {
-		this.props.details.videos.results.map(item => {
-			const request = axios.get(`${YOUTUBE_URL}/?id=${item.key}&key=${YOUTUBE_API_KEY}&part=snippet`)
-								.then(res => {
-									const data = this.state.youtubeVideos;
-									data.push(res.data.items[0]);
-								})
-								.catch(error => {
-									console.log(error); //eslint-disable-line
-								});
-			return request;
-		});
+	_retrieveYoutubeDetails() {	 
+		const data = this.state.youtubeVideos;		
+		const request  = data.push(this.props.details);
+		return request;		
 	}
 
 	_viewMovie(movieId) {
@@ -153,14 +146,15 @@ class Movie extends Component {
 		const iconStar = <Icon name="md-star" size={16} color="#F5B642" />;
 		const { details } = this.props;
 		const info = details;
+		//console.warn(JSON.stringify(this.state.youtubeVideos));
 
 		let height;
 		if (this.state.tab === 0) height = this.state.infoTabHeight;
 		if (this.state.tab === 1) height = this.state.castsTabHeight;
 		if (this.state.tab === 2) height = this.state.trailersTabHeight;
 
-		return (
-			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
+		return (		
+			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :	
 			<ScrollView
 					style={styles.container}
 					onScroll={this._onScroll.bind(this)}
@@ -177,7 +171,7 @@ class Movie extends Component {
 							progressBackgroundColor="white"
 						/>
 					}>
-				<View style={{ height }}>
+				<View>
 					<Swiper
 						style={styles.swiper}
 						autoplay
@@ -186,36 +180,11 @@ class Movie extends Component {
 						height={248}
 						loop
 						index={5}>
-						{
-							info.images.backdrops.map((item, index) => (
-								<View key={index}>
-									<Image source={{ uri: `${TMDB_IMG_URL}/w780/${(item.file_path)}` }} style={styles.imageBackdrop} />
-									<LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
-								</View>
-							))
-						}
-					</Swiper>
-					<View style={styles.cardContainer}>
-						<Image source={{ uri: `${TMDB_IMG_URL}/w185/${info.poster_path}` }} style={styles.cardImage} />
-						<View style={styles.cardDetails}>
-							<Text style={styles.cardTitle}>{info.original_title}</Text>
-							<Text style={styles.cardTagline}>{info.tagline}</Text>
-							<View style={styles.cardGenre}>
-								{
-									info.genres.map(item => (
-										<Text key={item.id} style={styles.cardGenreItem}>{item.name}</Text>
-									))
-								}
-							</View>
-							<View style={styles.cardNumbers}>
-								<View style={styles.cardStar}>
-									{iconStar}
-									<Text style={styles.cardStarRatings}>8.9</Text>
-								</View>
-								<Text style={styles.cardRunningHours} />
-							</View>
-						</View>
-					</View>
+						<View key={info.id}>
+							<Image source={{ uri: `${info.snippet.thumbnails.medium.url}` }} style={styles.imageBackdrop} />
+							<LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
+						</View>						
+					</Swiper>			      
 					<View style={styles.contentContainer}>
 						<ScrollableTabView
 							onChangeTab={this._onChangeTab}
@@ -226,13 +195,12 @@ class Movie extends Component {
 									style={styles.tabBar}
 								/>
 							)}>
-							<Info tabLabel="INFO" info={info} />
-							<Casts tabLabel="CASTS" info={info} getTabHeight={this._getTabHeight} />
-							<Trailers tabLabel="TRAILERS" youtubeVideos={this.state.youtubeVideos} openYoutube={this._openYoutube} getTabHeight={this._getTabHeight} />
+							<Info tabLabel="INFO" info={info} />							
+							<Related tabLabel="Videos Related" youtubeVideos={this.state.youtubeVideos} openYoutube={this._openYoutube} getTabHeight={this._getTabHeight} />
 						</ScrollableTabView>
-					</View>
+					</View>				
 				</View>
-			</ScrollView>
+			</ScrollView>	
 		);
 	}
 }
@@ -250,13 +218,13 @@ Movie.propTypes = {
 	actions: PropTypes.object.isRequired,
 	details: PropTypes.object.isRequired,
 	navigator: PropTypes.object,
-	movieId: PropTypes.number.isRequired
+	movieId: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
 	return {
 		details: state.movies.details,
-		similarMovies: state.movies.similarMovies
+	    //similarMovies: state.movies.similarMovies
 	};
 }
 

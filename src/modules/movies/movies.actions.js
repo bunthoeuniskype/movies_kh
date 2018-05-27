@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as types from '../../constants/actionTypes';
-import { TMDB_URL, TMDB_API_KEY } from '../../constants/api';
+import { TMDB_URL, TMDB_API_KEY, YOUTUBE_API_KEY, YOUTUBE_URL  } from '../../constants/api';
 
 // GENRES
 export function retrieveMoviesGenresSuccess(res) {
@@ -70,9 +70,10 @@ export function retrieveMoviesListSuccess(res) {
 	};
 }
 
-export function retrieveMoviesList(type, page) {
+export function retrieveMoviesList(type, page,playlistId='',nextPage='') {
+	getResult = page*5;
 	return function (dispatch) {
-		return axios.get(`${TMDB_URL}/movie/${type}?api_key=${TMDB_API_KEY}&page=${page}`)
+		return axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&key=AIzaSyBFOdOjZFkCiJg9qIdzKQKu80l5uTcpEus&maxResults=${getResult}${nextPage}`)
 		.then(res => {
 			dispatch(retrieveMoviesListSuccess(res));
 		})
@@ -83,21 +84,22 @@ export function retrieveMoviesList(type, page) {
 }
 
 // SEARCH RESULTS
-export function retrieveMoviesSearchResultsSuccess(res) {
+export function retrieveMoviesSearchResultsSuccess(res) {		
 	return {
 		type: types.RETRIEVE_MOVIES_SEARCH_RESULT_SUCCESS,
 		searchResults: res.data
 	};
 }
 
-export function retrieveMoviesSearchResults(query, page) {
+export function retrieveMoviesSearchResults(query, page,nextPage='') {
+	let getResult = page * 5;
 	return function (dispatch) {
-		return axios.get(`${TMDB_URL}/search/movie?api_key=${TMDB_API_KEY}&query=${query}&page=${page}`)
-		.then(res => {
+		return axios.get(`${YOUTUBE_URL}search?key=${YOUTUBE_API_KEY}&q=${query}&part=snippet&order=viewCount&maxResults=${getResult}&type=video${nextPage}`)
+		.then(res => {			
 			dispatch(retrieveMoviesSearchResultsSuccess(res));
 		})
 		.catch(error => {
-			console.log('Movies Search Results', error); //eslint-disable-line
+			console.warn('Movies Search Results', error); //eslint-disable-line
 		});
 	};
 }
@@ -106,13 +108,13 @@ export function retrieveMoviesSearchResults(query, page) {
 export function retrieveMovieDetailsSuccess(res) {
 	return {
 		type: types.RETRIEVE_MOVIE_DETAILS_SUCCESS,
-		details: res.data
+		details: res.data.items[0]
 	};
 }
 
 export function retrieveMovieDetails(movieId) {
 	return function (dispatch) {
-		return axios.get(`${TMDB_URL}/movie/${movieId}?api_key=${TMDB_API_KEY}&append_to_response=casts,images,videos`)
+		return axios.get(`${YOUTUBE_URL}videos?id=${movieId}&key=${YOUTUBE_API_KEY}&part=snippet`)
 		.then(res => {
 			dispatch(retrieveMovieDetailsSuccess(res));
 		})
