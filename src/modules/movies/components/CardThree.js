@@ -24,7 +24,7 @@ class CardThree extends Component {
 	}
 
 	_renderListView() {	
-		const { info, viewMovie } = this.props;
+		const { info, viewMovie,type } = this.props;
 		let listView;
 		if (info.snippet.title !== 'Deleted video') {
 			if(info.snippet.thumbnails.medium){
@@ -32,10 +32,16 @@ class CardThree extends Component {
 			}else{
 			   images = info.snippet.thumbnails.default.url;
 			}
+			if(type=="playlistItems"){
+				videoId = info.snippet.resourceId.videoId;
+			}else{
+				videoId = info.id.videoId;
+			}
+			// console.warn(type,info.snippet.resourceId.videoId);
 
 			listView = (
 				<View style={styles.cardContainer}>
-					<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this, info.id.videoId)}>
+					<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this, videoId)}>
 					<View style={styles.card}>
 						<Image source={{ uri: `${images}` }} style={styles.cardImage} />
 						<View style={styles.cardDetails}>

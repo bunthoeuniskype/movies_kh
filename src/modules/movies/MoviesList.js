@@ -9,7 +9,7 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { TMDB_URL, TMDB_API_KEY } from '../../constants/api';
+import { MOVIE_PLAY_LIST_ITEM_U2 } from '../../constants/api';
 import * as moviesActions from './movies.actions';
 import CardThree from './components/CardThree';
 import ProgressBar from '../_global/ProgressBar';
@@ -39,8 +39,7 @@ class MoviesList extends Component {
 	}
 
 	_retrieveMoviesList(isRefreshed) {
-		playListId = 'PLCnG-ZN6AyUipX2qhRBYZT-aZeNWosDRi';
-		this.props.actions.retrieveMoviesList(this.props.type, this.state.currentPage,playListId)
+		this.props.actions.retrieveMoviesList(this.props.type, this.state.currentPage,MOVIE_PLAY_LIST_ITEM_U2)
 			.then(() => {
 				const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });				
 				const dataSource = ds.cloneWithRows(this.props.list.items);
@@ -68,11 +67,11 @@ class MoviesList extends Component {
 			});
 		
 			nextPage = '&pageToken='+this.state.nextPage;
-			playListId = 'PLCnG-ZN6AyUipX2qhRBYZT-aZeNWosDRi';
-			this.props.actions.retrieveMoviesList(this.props.type, 1,playListId,nextPage)
+			this.props.actions.retrieveMoviesList(this.props.type, 1,MOVIE_PLAY_LIST_ITEM_U2,nextPage)
 				.then(() => {
 					const data = this.state.list.results;
 					const newData = this.props.list.items;
+					//console.warn(JSON.stringify(newData));
 					const nextPage = this.props.list.nextPageToken;
 					newData.map((item, index) => data.push(item));
 					this.setState({
@@ -83,9 +82,9 @@ class MoviesList extends Component {
 			}
 		}
 	
-	_viewMovie(movieId) {
+	_viewMovie(movieId) {	
 		this.props.navigator.showModal({
-			screen: 'movieapp.Movie',
+			screen: 'vdokh.Movie',
 			passProps: {
 				movieId
 			},
@@ -124,7 +123,7 @@ class MoviesList extends Component {
 				onEndReached={type => this._retrieveNextPage(this.props.type)}	
 				onEndReachedThreshold={1200}
 				dataSource={this.state.dataSource}
-				renderRow={rowData => <CardThree info={rowData} viewMovie={this._viewMovie} />}
+				renderRow={rowData => <CardThree info={rowData} type="playlistItems" viewMovie={this._viewMovie} />}
 				renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.seperator} />}
 				renderFooter={() => <View style={{ height: 50 }}><ProgressBar /></View>}
 				refreshControl={

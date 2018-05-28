@@ -27,7 +27,7 @@ const navigatorStyle = {
 
 Navigation.startSingleScreenApp({
 	screen: {
-		screen: 'movieapp.Movies',
+		screen: 'vdokh.Movies',
 		title: 'Movies',
 		navigatorStyle,
 		leftButtons: [
@@ -38,7 +38,7 @@ Navigation.startSingleScreenApp({
 	},
 	drawer: {
 		left: {
-			screen: 'movieapp.Drawer'
+			screen: 'vdokh.Drawer'
 		}
 	}
 });

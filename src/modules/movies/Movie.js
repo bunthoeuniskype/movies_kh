@@ -5,6 +5,7 @@ import {
 	RefreshControl,
 	ScrollView,
 	Text,
+	ListView,
 	ToastAndroid,
 	View
 } from 'react-native';
@@ -39,7 +40,11 @@ class Movie extends Component {
 			showSimilarMovies: true,
 			trailersTabHeight: null,
 			tab: 0,
-			youtubeVideos: []
+			youtubeVideos: [],
+			currentPage:1,
+			list: {
+				results: []
+			}
 		};
 
 		this._getTabHeight = this._getTabHeight.bind(this);
@@ -54,6 +59,7 @@ class Movie extends Component {
 
 	componentWillMount() {
 		this._retrieveDetails();	
+		this._getVideoRelated();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -68,9 +74,49 @@ class Movie extends Component {
 		if (isRefreshed && this.setState({ isRefreshing: false }));
 	}
 
-	_retrieveSimilarMovies() {
-		this.props.actions.retrieveSimilarMovies(this.props.movieId, 1);
-	}
+	_getVideoRelated(){
+		this.props.actions.retrieveVideoRelated(this.props.type, this.state.currentPage,this.props.movieId)
+			.then(() => {
+				const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });				
+				const dataSource = ds.cloneWithRows(this.props.list.items);
+				const totalResults = this.props.list.pageInfo.totalResults;
+  				const resultsPerPage = this.props.list.pageInfo.resultsPerPage;
+  				const nextPageToken = this.props.list.nextPage;
+  				console.warn(JSON.stringify(this.props.list.items));
+				this.setState({
+					nextPageToken,
+					totalResults,
+					resultsPerPage,
+					list: this.props.list.items,
+					dataSource,
+					isLoading: false
+				});
+			});
+		}
+
+	_getRelatedNextPage(type) {
+		totalItem = this.state.currentPage*this.state.resultsPerPage;				
+		if (totalItem < this.state.totalResults) {
+			this.setState({
+				currentPage: this.state.currentPage + 1
+			});
+		
+			nextPage = '&pageToken='+this.state.nextPage;
+			this.props.actions.retrieveVideoRelated(this.props.type, 1,this.props.movieId,nextPage)
+				.then(() => {
+					const data = this.state.list.results;
+					const newData = this.props.list.items;
+					//console.warn(JSON.stringify(newData));
+					const nextPage = this.props.list.nextPageToken;
+					newData.map((item, index) => data.push(item));
+					this.setState({
+						nextPage,
+						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
+					});
+				});
+			}
+		}
+	
 
 	_onRefresh() {
 		this.setState({ isRefreshing: true });
@@ -112,12 +158,13 @@ class Movie extends Component {
 	_retrieveYoutubeDetails() {	 
 		const data = this.state.youtubeVideos;		
 		const request  = data.push(this.props.details);
+		// console.warn(JSON.stringify(this.props.details));
 		return request;		
 	}
 
 	_viewMovie(movieId) {
 		this.props.navigator.push({
-			screen: 'movieapp.Movie',
+			screen: 'vdokh.Movie',
 			passProps: {
 				movieId
 			}
@@ -154,7 +201,7 @@ class Movie extends Component {
 		if (this.state.tab === 2) height = this.state.trailersTabHeight;
 
 		return (		
-			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :	
+			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> : this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :	
 			<ScrollView
 					style={styles.container}
 					onScroll={this._onScroll.bind(this)}
@@ -196,7 +243,7 @@ class Movie extends Component {
 								/>
 							)}>
 							<Info tabLabel="INFO" info={info} />							
-							<Related tabLabel="Videos Related" youtubeVideos={this.state.youtubeVideos} openYoutube={this._openYoutube} getTabHeight={this._getTabHeight} />
+							<Related tabLabel="Videos Related" youtubeVideos={this.props.list.items} openYoutube={this._openYoutube} getTabHeight={this._getTabHeight} />
 						</ScrollableTabView>
 					</View>				
 				</View>
@@ -218,12 +265,14 @@ Movie.propTypes = {
 	actions: PropTypes.object.isRequired,
 	details: PropTypes.object.isRequired,
 	navigator: PropTypes.object,
-	movieId: PropTypes.string.isRequired
+	movieId: PropTypes.string.isRequired,
+	list: PropTypes.object,
 };
 
 function mapStateToProps(state, ownProps) {
 	return {
 		details: state.movies.details,
+		list: state.movies.list,
 	    //similarMovies: state.movies.similarMovies
 	};
 }

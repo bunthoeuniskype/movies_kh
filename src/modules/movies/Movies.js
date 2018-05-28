@@ -62,7 +62,7 @@ class Movies extends Component {
 		}
 		this.props.navigator.showModal({
 			title,
-			screen: 'movieapp.MoviesList',
+			screen: 'vdokh.MoviesList',
 			passProps: {
 				type
 			},
@@ -74,7 +74,7 @@ class Movies extends Component {
 
 	_viewMovie(movieId) {
 		this.props.navigator.showModal({
-			screen: 'movieapp.Movie',
+			screen: 'vdokh.Movie',
 			passProps: {
 				movieId
 			},
@@ -109,7 +109,7 @@ class Movies extends Component {
 					];
 				}
 				this.props.navigator.showModal({
-					screen: 'movieapp.Search',
+					screen: 'vdokh.Search',
 					title: 'Search',
 					navigatorButtons: {
 						rightButtons

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as types from '../../constants/actionTypes';
-import { TMDB_URL, TMDB_API_KEY, YOUTUBE_API_KEY, YOUTUBE_URL  } from '../../constants/api';
+import { TMDB_URL, TMDB_API_KEY,VIDEO_LOCATION_U2, YOUTUBE_API_KEY, YOUTUBE_URL  } from '../../constants/api';
 
 // GENRES
 export function retrieveMoviesGenresSuccess(res) {
@@ -70,10 +70,24 @@ export function retrieveMoviesListSuccess(res) {
 	};
 }
 
+//VIDEO RELATED
+export function retrieveVideoRelated(type, page,relatedToVideoId='',nextPage='') {
+	getResult = page*5;
+	return function (dispatch) {
+		return axios.get(`${YOUTUBE_URL}search?part=snippet&order=viewCount&type=video&relatedToVideoId=${relatedToVideoId}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
+		.then(res => {
+			dispatch(retrieveMoviesListSuccess(res));			
+		})
+		.catch(error => {
+			console.log('VIDEO RELATED', error); //eslint-disable-line
+		});
+	};
+}
+
 export function retrieveMoviesList(type, page,playlistId='',nextPage='') {
 	getResult = page*5;
 	return function (dispatch) {
-		return axios.get(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&key=AIzaSyBFOdOjZFkCiJg9qIdzKQKu80l5uTcpEus&maxResults=${getResult}${nextPage}`)
+		return axios.get(`${YOUTUBE_URL}playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
 		.then(res => {
 			dispatch(retrieveMoviesListSuccess(res));
 		})

@@ -84,7 +84,7 @@ class Search extends Component {
 
 	_viewMovie(movieId) {
 		this.props.navigator.push({
-			screen: 'movieapp.Movie',
+			screen: 'vdokh.Movie',
 			passProps: {
 				movieId
 			},
@@ -117,7 +117,7 @@ class Search extends Component {
 					enableEmptySections					
 					onEndReachedThreshold={1200}
 					dataSource={this.state.dataSource}
-					renderRow={rowData => <CardThree info={rowData} viewMovie={this._viewMovie} />}
+					renderRow={rowData => <CardThree info={rowData} type="search" viewMovie={this._viewMovie} />}
 					renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.seperator} />}
 				/>
 			);
