@@ -19,6 +19,13 @@ const styles = StyleSheet.create({
 	seperator: {
 		marginTop: 10,
 		backgroundColor: '#8E8E8E'
+	},
+	btn:{
+		backgroundColor: '#8E8E8E',
+		padding:10,
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
 	}
 });
 

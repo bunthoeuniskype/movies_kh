@@ -58,8 +58,7 @@ class Movie extends Component {
 	}
 
 	componentWillMount() {
-		this._retrieveDetails();	
-		this._getVideoRelated();
+		this._retrieveDetails();		
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -74,50 +73,7 @@ class Movie extends Component {
 		if (isRefreshed && this.setState({ isRefreshing: false }));
 	}
 
-	_getVideoRelated(){
-		this.props.actions.retrieveVideoRelated(this.props.type, this.state.currentPage,this.props.movieId)
-			.then(() => {
-				const ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });				
-				const dataSource = ds.cloneWithRows(this.props.list.items);
-				const totalResults = this.props.list.pageInfo.totalResults;
-  				const resultsPerPage = this.props.list.pageInfo.resultsPerPage;
-  				const nextPageToken = this.props.list.nextPage;
-  				console.warn(JSON.stringify(this.props.list.items));
-				this.setState({
-					nextPageToken,
-					totalResults,
-					resultsPerPage,
-					list: this.props.list.items,
-					dataSource,
-					isLoading: false
-				});
-			});
-		}
-
-	_getRelatedNextPage(type) {
-		totalItem = this.state.currentPage*this.state.resultsPerPage;				
-		if (totalItem < this.state.totalResults) {
-			this.setState({
-				currentPage: this.state.currentPage + 1
-			});
-		
-			nextPage = '&pageToken='+this.state.nextPage;
-			this.props.actions.retrieveVideoRelated(this.props.type, 1,this.props.movieId,nextPage)
-				.then(() => {
-					const data = this.state.list.results;
-					const newData = this.props.list.items;
-					//console.warn(JSON.stringify(newData));
-					const nextPage = this.props.list.nextPageToken;
-					newData.map((item, index) => data.push(item));
-					this.setState({
-						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
-					});
-				});
-			}
-		}
 	
-
 	_onRefresh() {
 		this.setState({ isRefreshing: true });
 		this._retrieveDetails('isRefreshed');
@@ -243,7 +199,7 @@ class Movie extends Component {
 								/>
 							)}>
 							<Info tabLabel="INFO" info={info} />							
-							<Related tabLabel="Videos Related" youtubeVideos={this.props.list.items} openYoutube={this._openYoutube} getTabHeight={this._getTabHeight} />
+							<Related tabLabel="Videos Related" movieId={this.props.movieId} navigator={this.props.navigator}/>
 						</ScrollableTabView>
 					</View>				
 				</View>

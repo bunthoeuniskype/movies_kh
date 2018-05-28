@@ -71,15 +71,16 @@ export function retrieveMoviesListSuccess(res) {
 }
 
 //VIDEO RELATED
-export function retrieveVideoRelated(type, page,relatedToVideoId='',nextPage='') {
+export function retrieveVideoRelated(type='video', page,relatedToVideoId='',nextPage='') {
+	//console.warn(nextPage);	
 	getResult = page*5;
 	return function (dispatch) {
-		return axios.get(`${YOUTUBE_URL}search?part=snippet&order=viewCount&type=video&relatedToVideoId=${relatedToVideoId}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
+		return axios.get(`${YOUTUBE_URL}search?part=snippet&order=viewCount&type=${type}&relatedToVideoId=${relatedToVideoId}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
 		.then(res => {
 			dispatch(retrieveMoviesListSuccess(res));			
 		})
 		.catch(error => {
-			console.log('VIDEO RELATED', error); //eslint-disable-line
+			console.warn('VIDEO RELATED', error); //eslint-disable-line
 		});
 	};
 }
@@ -92,7 +93,7 @@ export function retrieveMoviesList(type, page,playlistId='',nextPage='') {
 			dispatch(retrieveMoviesListSuccess(res));
 		})
 		.catch(error => {
-			console.log('Movies List', error); //eslint-disable-line
+			console.warn('Movies List', error); //eslint-disable-line
 		});
 	};
 }
@@ -113,7 +114,7 @@ export function retrieveMoviesSearchResults(query, page,nextPage='') {
 			dispatch(retrieveMoviesSearchResultsSuccess(res));
 		})
 		.catch(error => {
-			console.warn('Movies Search Results', error); //eslint-disable-line
+			console.log('Movies Search Results', error); //eslint-disable-line
 		});
 	};
 }

@@ -45,10 +45,10 @@ class MoviesList extends Component {
 				const dataSource = ds.cloneWithRows(this.props.list.items);
 				const totalResults = this.props.list.pageInfo.totalResults;
   				const resultsPerPage = this.props.list.pageInfo.resultsPerPage;
-  				const nextPageToken = this.props.list.nextPage;
+  				const nextPage = this.props.list.nextPageToken;
   				// console.warn(JSON.stringify(this.props.list.items));
 				this.setState({
-					nextPageToken,
+					nextPage,
 					totalResults,
 					resultsPerPage,
 					list: this.props.list.items,
@@ -71,12 +71,11 @@ class MoviesList extends Component {
 				.then(() => {
 					const data = this.state.list.results;
 					const newData = this.props.list.items;
-					//console.warn(JSON.stringify(newData));
-					const nextPage = this.props.list.nextPageToken;
-					newData.map((item, index) => data.push(item));
+					const nextPage = this.props.list.nextPageToken;					
+					//newData.map((item, index) => data.push(item));
 					this.setState({
 						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
+						dataSource: this.state.dataSource.cloneWithRows(newData)
 					});
 				});
 			}

@@ -139,8 +139,7 @@ class Movies extends Component {
 						titleColor="white"
 						progressBackgroundColor="white"
 					/>
-				}>
-				
+				}>				
 				<View>
 					<View style={styles.listHeading}>
 						<Text style={styles.listHeadingLeft}>Popular</Text>
