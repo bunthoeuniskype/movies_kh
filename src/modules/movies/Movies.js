@@ -62,7 +62,7 @@ class Movies extends Component {
 		}
 		this.props.navigator.showModal({
 			title,
-			screen: 'vdokh.MoviesList',
+			screen: 'vdokh.PopularList',
 			passProps: {
 				type
 			},
@@ -121,7 +121,7 @@ class Movies extends Component {
 
 	render() {
 		const { nowPlayingMovies, popularMovies } = this.props;
-
+		//console.warn(JSON.stringify(popularMovies));
 		const iconPlay = <Icon name="md-play" size={21} color="#9F9F9F" style={{ paddingLeft: 3, width: 22 }} />;
 		const iconTop = <Icon name="md-trending-up" size={21} color="#9F9F9F" style={{ width: 22 }} />;
 		const iconUp = <Icon name="md-recording" size={21} color="#9F9F9F" style={{ width: 22 }} />;
@@ -147,7 +147,7 @@ class Movies extends Component {
 					showsPagination={false}
 					height={248}>
 					{nowPlayingMovies.items.map(info => (
-						<CardOne key={info.id.videoId} info={info} viewMovie={this._viewMovie} />
+						<CardOne key={info.snippet.resourceId.videoId}  type="playlistItems" info={info} viewMovie={this._viewMovie} />
 					))}
 				</Swiper>				
 				<View>
@@ -161,37 +161,11 @@ class Movies extends Component {
 							</Text>
 						</TouchableOpacity>
 					</View>
-					
-					<View style={styles.browseList}>
-						<TouchableOpacity activeOpacity={0.7}>
-							<View style={styles.browseListItem}>
-								{iconPlay}
-								<Text
-									style={styles.browseListItemText}
-									onPress={this._viewMoviesList.bind(this, 'now_playing', 'Now Playing')}>
-									Now Playing
-								</Text>
-							</View>
-						</TouchableOpacity>
-						<TouchableOpacity activeOpacity={0.7}>
-							<View style={styles.browseListItem}>
-								{iconTop}
-								<Text style={styles.browseListItemText} onPress={this._viewMoviesList.bind(this, 'top_rated', 'Top Rated')}>
-									Top Rated
-								</Text>
-							</View>
-						</TouchableOpacity>
-						<TouchableOpacity activeOpacity={0.7}>
-							<View style={styles.browseListItem}>
-								{iconUp}
-								<Text
-									style={styles.browseListItemText}
-									onPress={this._viewMoviesList.bind(this, 'upcoming', 'Upcoming')}>
-									Upcoming
-								</Text>
-							</View>
-						</TouchableOpacity>
-					</View>
+					<ScrollView horizontal showsHorizontalScrollIndicator={false}>
+						{popularMovies.items.map(info => (
+							<CardTwo key={info.snippet.resourceId.videoId} type="playlistItems" info={info} viewMovie={this._viewMovie} />
+						))}
+					</ScrollView>
 				</View>
 			</ScrollView>
 		);

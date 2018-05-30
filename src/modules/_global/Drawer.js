@@ -84,7 +84,7 @@ class Drawer extends Component {
 								</Text>
 							</View>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={this._goToMovies}>
+						<TouchableOpacity onPress={this._goToMusic}>
 							<View style={styles.drawerListItem}>
 								{iconMusic}
 								<Text style={styles.drawerListItemText}>
@@ -92,7 +92,7 @@ class Drawer extends Component {
 								</Text>
 							</View>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={this._goToMovies}>
+						<TouchableOpacity onPress={this._goToDance}>
 							<View style={styles.drawerListItem}>
 								{iconDance}
 								<Text style={styles.drawerListItemText}>

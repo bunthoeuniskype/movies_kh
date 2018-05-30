@@ -28,7 +28,7 @@ const navigatorStyle = {
 Navigation.startSingleScreenApp({
 	screen: {
 		screen: 'vdokh.Movies',
-		title: 'Movies',
+		title: 'Videos Khmer',
 		navigatorStyle,
 		leftButtons: [
 			{

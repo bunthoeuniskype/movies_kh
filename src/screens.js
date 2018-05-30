@@ -6,6 +6,7 @@ import Movies from './modules/movies/Movies';
 import MoviesList from './modules/movies/MoviesList';
 import MusicList from './modules/movies/MusicList';
 import DanceList from './modules/movies/DanceList';
+import PopularList from './modules/movies/PopularList';
 import Movie from './modules/movies/Movie';
 import Search from './modules/movies/Search';
 
@@ -15,6 +16,7 @@ export function registerScreens(store, Provider) {
 	Navigation.registerComponent('vdokh.MoviesList', () => MoviesList, store, Provider);
 	Navigation.registerComponent('vdokh.DanceList', () => DanceList, store, Provider);
 	Navigation.registerComponent('vdokh.MusicList', () => MusicList, store, Provider);
+	Navigation.registerComponent('vdokh.PopularList', () => PopularList, store, Provider);
 	Navigation.registerComponent('vdokh.Search', () => Search, store, Provider);
 	Navigation.registerComponent('vdokh.Drawer', () => Drawer);
 }

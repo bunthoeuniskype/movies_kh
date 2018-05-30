@@ -9,12 +9,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 
 import styles from './styles/CardOne';
-import { TMDB_IMG_URL } from '../../../constants/api';
 
 const iconStar = (<Icon name="md-star" size={16} color="#F5B642" />);
 
-const CardOne = ({ info, viewMovie }) => {
-	//console.warn(JSON.stringify(info));
+const CardOne = ({ info, viewMovie,type }) => {
+			//console.warn(JSON.stringify(info));
+			if(type=="playlistItems"){
+				videoId = info.snippet.resourceId.videoId;
+			}else{
+				videoId = info.id.videoId;
+			}
+
 	return (
 	<View>
 		<Image source={{ uri: `${(info.snippet.thumbnails.medium.url || info.snippet.thumbnails.default.url)}` }} style={styles.imageBackdrop} />
@@ -35,7 +40,7 @@ const CardOne = ({ info, viewMovie }) => {
 				<Text style={styles.cardDescription} numberOfLines={3}>
 					{info.snippet.description}
 				</Text>
-				<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this,info.id.videoId)}>
+				<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this,videoId)}>
 					<View style={styles.viewButton}>
 						<Text style={styles.viewButtonText}>Play now</Text>
 					</View>
@@ -48,7 +53,8 @@ const CardOne = ({ info, viewMovie }) => {
 
 CardOne.propTypes = {
 	info: PropTypes.object.isRequired,
-	viewMovie: PropTypes.func.isRequired
+	viewMovie: PropTypes.func.isRequired,
+	type: PropTypes.string.isRequired,
 };
 
 export default CardOne;
