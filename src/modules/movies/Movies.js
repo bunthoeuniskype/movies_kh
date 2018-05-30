@@ -44,7 +44,7 @@ class Movies extends Component {
 	}
 
 	_retrieveMovies(isRefreshed) {
-		this.props.actions.retrieveNowPlayingMovies();
+		this.props.actions.retrieveNowPlayingMovies('Khmer original song');
 		this.props.actions.retrievePopularMovies();
 		if (isRefreshed && this.setState({ isRefreshing: false }));
 	}
@@ -121,12 +121,13 @@ class Movies extends Component {
 
 	render() {
 		const { nowPlayingMovies, popularMovies } = this.props;
+
 		const iconPlay = <Icon name="md-play" size={21} color="#9F9F9F" style={{ paddingLeft: 3, width: 22 }} />;
 		const iconTop = <Icon name="md-trending-up" size={21} color="#9F9F9F" style={{ width: 22 }} />;
 		const iconUp = <Icon name="md-recording" size={21} color="#9F9F9F" style={{ width: 22 }} />;
 
 		return (
-			//this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
+			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
 			<ScrollView
 				style={styles.container}
 				refreshControl={
@@ -139,7 +140,16 @@ class Movies extends Component {
 						titleColor="white"
 						progressBackgroundColor="white"
 					/>
-				}>				
+				}>
+				<Swiper
+					autoplay
+					autoplayTimeout={4}
+					showsPagination={false}
+					height={248}>
+					{nowPlayingMovies.items.map(info => (
+						<CardOne key={info.id.videoId} info={info} viewMovie={this._viewMovie} />
+					))}
+				</Swiper>				
 				<View>
 					<View style={styles.listHeading}>
 						<Text style={styles.listHeadingLeft}>Popular</Text>

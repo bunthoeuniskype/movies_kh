@@ -75,7 +75,7 @@ class Related extends React.Component {
 				.then(() => {
 					const data = this.state.list.results;
 					const newData = this.props.list.items;
-					console.warn(JSON.stringify(newData));
+					// console.warn(JSON.stringify(newData));
 					const nextPage = this.props.list.nextPageToken;
 					newData.map((item, index) => data.push(item));
 					this.setState({

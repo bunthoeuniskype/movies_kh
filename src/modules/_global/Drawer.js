@@ -38,14 +38,14 @@ class Drawer extends Component {
 	_goToMusic() {	
 		this._toggleDrawer();
 		this.props.navigator.push({
-			screen: 'vdokh.MoviesList',
+			screen: 'vdokh.MusicList',
 			title: 'Music'
 		});
 	}
 	_goToDance() {	
 		this._toggleDrawer();
 		this.props.navigator.push({
-			screen: 'vdokh.MoviesList',
+			screen: 'vdokh.DanceList',
 			title: 'Dance'
 		});
 	}

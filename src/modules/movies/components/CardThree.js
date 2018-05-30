@@ -27,11 +27,11 @@ class CardThree extends Component {
 		const { info, viewMovie,type } = this.props;
 		let listView;
 		if (info.snippet.title !== 'Deleted video') {
-			if(info.snippet.thumbnails.medium){
-				images = info.snippet.thumbnails.medium.url;
-			}else{
-			   images = info.snippet.thumbnails.default.url;
-			}
+			// if(info.snippet.thumbnails.medium){
+			// 	images = info.snippet.thumbnails.medium.url;
+			// }else{
+			//    images = info.snippet.thumbnails.default.url;
+			// }
 			if(type=="playlistItems"){
 				videoId = info.snippet.resourceId.videoId;
 			}else{
@@ -43,7 +43,7 @@ class CardThree extends Component {
 				<View style={styles.cardContainer}>
 					<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this, videoId)}>
 					<View style={styles.card}>
-						<Image source={{ uri: `${images}` }} style={styles.cardImage} />
+						<Image source={{ uri: `${(info.snippet.thumbnails.medium.url || info.snippet.thumbnails.default.url)}` }} style={styles.cardImage} />
 						<View style={styles.cardDetails}>
 							<Text
 								style={styles.cardTitle}

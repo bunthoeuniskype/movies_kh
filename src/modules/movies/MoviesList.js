@@ -72,10 +72,10 @@ class MoviesList extends Component {
 					const data = this.state.list.results;
 					const newData = this.props.list.items;
 					const nextPage = this.props.list.nextPageToken;					
-					//newData.map((item, index) => data.push(item));
+					newData.map((item, index) => data.push(item));
 					this.setState({
 						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(newData)
+						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
 					});
 				});
 			}

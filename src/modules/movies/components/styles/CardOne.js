@@ -71,7 +71,8 @@ const styles = StyleSheet.create({
 		backgroundColor: '#EA0000',
 		width: 100,
 		height: 30,
-		marginTop: 10
+		marginTop: 10,
+		alignItems:'center'
 	},
 	viewButtonText: {
 		color: 'white'

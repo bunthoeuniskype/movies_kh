@@ -12,3 +12,4 @@ export const DANCE_PLAY_LIST_ITEM_U2 = Config.DANCE_PLAY_LIST_ITEM_U2;
 export const MOVIE_PLAY_LIST_ITEM_U2 = Config.MOVIE_PLAY_LIST_ITEM_U2;
 export const VIDEO_LOCATION_U2 = Config.VIDEO_LOCATION_U2;
 
+export const VIDEO_LOCATION_U2 = 'regionCode=KH&locationRadius=1km&location=12.5991054,103.6309469';

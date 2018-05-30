@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as types from '../../constants/actionTypes';
-import { TMDB_URL, TMDB_API_KEY,VIDEO_LOCATION_U2, YOUTUBE_API_KEY, YOUTUBE_URL  } from '../../constants/api';
+import { LATEST_PLAY_LIST_ITEM_U2,TMDB_URL, TMDB_API_KEY,VIDEO_LOCATION_U2, YOUTUBE_API_KEY, YOUTUBE_URL  } from '../../constants/api';
+
+
 
 // GENRES
 export function retrieveMoviesGenresSuccess(res) {
@@ -43,16 +45,17 @@ export function retrievePopularMovies(page) {
 }
 
 // NOW PLAYING
-export function retrieveNowPlayingMoviesSuccess(res) {
+export function retrieveNowPlayingMoviesSuccess(res) {	
 	return {
 		type: types.RETRIEVE_NOWPLAYING_MOVIES_SUCCESS,
 		nowPlayingMovies: res.data
 	};
 }
 
-export function retrieveNowPlayingMovies(page) {
+export function retrieveNowPlayingMovies(query='khmer Movies') {
 	return function (dispatch) {
-		return axios.get(`${TMDB_URL}/movie/now_playing?api_key=${TMDB_API_KEY}&page=${page}`)
+		//return axios.get(`${YOUTUBE_URL}search?key=${YOUTUBE_API_KEY}&q=${query}&part=snippet&order=viewCount&maxResults=3&type=video&videoDefinition=high`)
+		return axios.get(`${YOUTUBE_URL}search?part=snippet&relatedToVideoId=${LATEST_PLAY_LIST_ITEM_U2}&key=${YOUTUBE_API_KEY}`)
 		.then(res => {
 			dispatch(retrieveNowPlayingMoviesSuccess(res));
 		})
