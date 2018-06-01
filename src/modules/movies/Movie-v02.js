@@ -186,7 +186,7 @@ class Movie extends Component {
 				 <VideoPlayer
 				          endWithThumbnail
 				          thumbnail={{ uri: `${info.snippet.thumbnails.medium.url}` }}
-				          video={{ uri: `${videoUrl}` }}		
+				          video={{ uri: videoUrl }}		
 				          videoWidth={this.state.video.width}
 				          videoHeight={this.state.video.height}
 				          duration={this.state.video.duration}		        

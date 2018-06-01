@@ -83,7 +83,7 @@ class Movies extends Component {
 				rightButtons: [
 					{
 						id: 'close',
-						icon: iconsMap['ios-arrow-round-down']
+						icon: iconsMap['ios-remove-circle-outline']
 					}
 				]
 			}
