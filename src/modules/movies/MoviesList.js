@@ -115,7 +115,7 @@ class MoviesList extends Component {
 	render() {
 	
 		return (
-			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :
+			this.state.isLoading ? <View style={styles.progressBar}><ProgressBar /></View> :			
 			<ListView
 				style={styles.container}
 				enableEmptySections			
@@ -136,7 +136,7 @@ class MoviesList extends Component {
 						progressBackgroundColor="white"
 					/>
 				}
-			/>
+			/>			
 		);
 	}
 }

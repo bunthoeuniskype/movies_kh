@@ -37,7 +37,7 @@ class App extends Component {
 					screen: 'vdokh.Movies',
 					icon: iconsMap['ios-film-outline'],
 					selectedIcon: iconsMap['ios-film'],
-					title: 'Movies',
+					title: 'Videos Khmer',
 					navigatorStyle,
 					navigatorButtons: {
 						rightButtons: [

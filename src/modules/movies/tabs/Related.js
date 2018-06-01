@@ -150,10 +150,7 @@ class Related extends React.Component {
 	render(){		
 		return (
 			<View>
-				{this._viewRender()}
-				<TouchableOpacity style={styles.btn} onPress={()=> this._getRelatedNextPage('video') }>
-						<Text>Load More</Text>
-				</TouchableOpacity>
+				{this._viewRender()}				
 			</View>
 		);
 	}	
