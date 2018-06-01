@@ -132,7 +132,7 @@ export function retrieveMovieDetailsSuccess(res) {
 
 export function retrieveMovieDetails(movieId) {
 	return function (dispatch) {
-		return axios.get(`${YOUTUBE_URL}videos?id=${movieId}&key=${YOUTUBE_API_KEY}&part=snippet`)
+		return axios.get(`${YOUTUBE_URL}videos?id=${movieId}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails`)
 		.then(res => {
 			dispatch(retrieveMovieDetailsSuccess(res));
 		})

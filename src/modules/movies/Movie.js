@@ -7,7 +7,7 @@ import {
 	Text,
 	ListView,
 	ToastAndroid,
-	View
+	View, WebView, Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
@@ -25,6 +25,7 @@ import ProgressBar from '../_global/ProgressBar';
 import Related from './tabs/Related';
 import styles from './styles/Movie';
 import CardOne from './components/CardOne';
+import VideoPlayer from 'react-native-video-player';
 import { TMDB_IMG_URL, YOUTUBE_API_KEY, YOUTUBE_URL } from '../../constants/api';
 
 class Movie extends Component {
@@ -44,7 +45,10 @@ class Movie extends Component {
 			currentPage:1,
 			list: {
 				results: []
-			}
+			},
+			video: { width: undefined, height: undefined, duration: undefined },
+		    thumbnailUrl: undefined,
+		    videoUrl: undefined,
 		};
 
 		this._getTabHeight = this._getTabHeight.bind(this);
@@ -150,6 +154,10 @@ class Movie extends Component {
 		const { details } = this.props;
 		const info = details;
 		//console.warn(JSON.stringify(this.state.youtubeVideos));
+		//const videoUrl = 'https://gcs-vimeo.akamaized.net/exp=1527849554~acl=%2A%2F587282651.mp4%2A~hmac=6d46e0211e9f55781cb02d1ba23e80fafe2c8ce9270664b0f8f353ce202c4c9d/vimeo-prod-skyfire-std-us/01/971/7/179859217/587282651.mp4';
+		const videoUrl = 'https://www.youtube.com/embed/'+info.id;
+		//console.warn(JSON.stringify(info.contentDetails.duration))
+		//console.warn(ytDurationToSeconds('PT4M59S'));
 
 		let height;
 		if (this.state.tab === 0) height = this.state.infoTabHeight;
@@ -174,20 +182,22 @@ class Movie extends Component {
 							progressBackgroundColor="white"
 						/>
 					}>
-				<View>
-					<Swiper
-						style={styles.swiper}
-						autoplay
-						autoplayTimeout={4}
-						showsPagination={false}
-						height={248}
-						loop
-						index={5}>
-						<View key={info.id}>
-							<Image source={{ uri: `${info.snippet.thumbnails.medium.url}` }} style={styles.imageBackdrop} />
-							<LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
-						</View>						
-					</Swiper>			      
+				<View>		
+				  <WebView
+                    style={ styles.WebViewContainer }
+                    javaScriptEnabled={true}
+                    domStorageEnabled={true}
+                	source={{uri: 'https://www.youtube.com/embed/dFKhWe2bBkM' }}
+          			 />
+					  <VideoPlayer
+				          endWithThumbnail
+				          thumbnail={{ uri: `${info.snippet.thumbnails.medium.url}` }}
+				          video={{ uri: videoUrl }}		
+				          videoWidth={this.state.video.width}
+				          videoHeight={this.state.video.height}
+				          duration={this.state.video.duration}		        
+				          ref={r => this.player = r}
+				        />
 					<View style={styles.contentContainer}>
 						<ScrollableTabView
 							onChangeTab={this._onChangeTab}
@@ -238,5 +248,79 @@ function mapDispatchToProps(dispatch) {
 		actions: bindActionCreators(moviesActions, dispatch)
 	};
 }
+
+
+
+//  function convertYouTubeTimeFormatToSeconds(timeFormat) {
+
+//     if ( timeFormat === null || timeFormat.indexOf("PT") !== 0 ) {
+//         return 0;
+//     }
+
+//     // match the digits into an array
+//     // each set of digits into an item
+//     var digitArray      = timeFormat.match(/\d+/g);
+//     var totalSeconds    = 0;
+
+//     // only 1 value in array
+//     if (timeFormat.indexOf('H') > -1 && timeFormat.indexOf('M') == -1 && timeFormat.indexOf('S') == -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60 * 60;
+//     }
+
+//     else if (timeFormat.indexOf('H') == -1 && timeFormat.indexOf('M') > -1 && timeFormat.indexOf('S') == -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60;
+//     }
+
+//     else if (timeFormat.indexOf('H') == -1 && timeFormat.indexOf('M') == -1 && timeFormat.indexOf('S') > -1) {
+//         totalSeconds    += getIntValue(digitArray[0]);
+//     }
+
+
+//     // 2 values in array
+//     else if (timeFormat.indexOf('H') > -1 && timeFormat.indexOf('M') > -1 && timeFormat.indexOf('S') == -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60 * 60;
+//         totalSeconds    += getIntValue(digitArray[1]) * 60;
+//     }
+
+//     else if (timeFormat.indexOf('H') > -1 && timeFormat.indexOf('M') == -1 && timeFormat.indexOf('S') > -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60 * 60;
+//         totalSeconds    += getIntValue(digitArray[1]);
+//     }
+
+//     else if (timeFormat.indexOf('H') == -1 && timeFormat.indexOf('M') > -1 && timeFormat.indexOf('S') > -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60;
+//         totalSeconds    += getIntValue(digitArray[1]);
+//     }
+
+
+//     // all 3 values
+//     else if (timeFormat.indexOf('H') > -1 && timeFormat.indexOf('M') > -1 && timeFormat.indexOf('S') > -1) {
+//         totalSeconds    += getIntValue(digitArray[0]) * 60 * 60;
+//         totalSeconds    += getIntValue(digitArray[1]) * 60;
+//         totalSeconds    += getIntValue(digitArray[2]);
+//     }
+
+// //  console.log(timeFormat, totalSeconds);
+
+//     return totalSeconds;
+// }
+// function getIntValue(value) {
+//     if (value === null) {
+//         return 0;
+//     }
+
+//     else {
+
+//         var intValue = 0;
+//         try {
+//             intValue        = parseInt(value);
+//             if (isNaN(intValue)) {
+//                 intValue    = 0;
+//             }
+//         } catch (ex) { }
+
+//         return Math.floor(intValue);
+//     }
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);
