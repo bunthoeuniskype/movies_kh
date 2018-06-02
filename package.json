@@ -1,5 +1,5 @@
 {
-  "name": "movieapp",
+  "name": "vdokh",
   "version": "2.2.1",
   "private": true,
   "scripts": {
@@ -48,12 +48,12 @@
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-logger": "^3.0.6"
   },
-  "description": "Discover movies and tv shows",
+  "description": "Make videos khmer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junedomingo/movieapp.git"
+    "url": "git+https://github.com/bunthoeuniskype/movies_kh.git"
   },
-  "author": "June Domingo <junedomingo@gmail.com>",
+  "author": "sor bunthoeun <bsite168@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/junedomingo/movieapp#readme"
+  "homepage": "https://github.com/bunthoeuniskype/movies_kh#readme"
 }

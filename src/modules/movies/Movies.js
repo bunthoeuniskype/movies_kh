@@ -18,6 +18,8 @@ import CardTwo from './components/CardTwo';
 import ProgressBar from '../_global/ProgressBar';
 import styles from './styles/Movies';
 import { iconsMap } from '../../utils/AppIcons';
+import SplashScreen from 'react-native-splash-screen';
+	
 
 class Movies extends Component {
 	constructor(props) {
@@ -36,6 +38,10 @@ class Movies extends Component {
 	componentWillMount() {
 		this._retrieveMovies();
 	}
+	
+	componentDidMount() {
+     	SplashScreen.hide();
+    }
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.nowPlayingMovies && nextProps.popularMovies) {

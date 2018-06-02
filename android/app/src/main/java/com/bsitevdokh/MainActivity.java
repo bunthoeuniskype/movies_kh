@@ -1,9 +1,17 @@
-package com.movieapp;
+package com.bsitevdokh;
 
+import android.os.Bundle;
 // import com.facebook.react.ReactActivity;
 import com.reactnativenavigation.controllers.SplashActivity;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends SplashActivity {
+
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);  // here
+        super.onCreate(savedInstanceState);
+    }
 
     /**
      * Returns the name of the main component registered from JavaScript.

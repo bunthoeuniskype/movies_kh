@@ -1,10 +1,11 @@
-package com.movieapp;
+package com.bsitevdokh;
 
 import android.app.Application;
 import android.util.Log;
 import android.support.annotation.NonNull;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -30,7 +31,7 @@ public class MainApplication extends NavigationApplication {
   //   @Override
   //   protected List<ReactPackage> getPackages() {
   //     return Arrays.<ReactPackage>asList(
-  //         new MainReactPackage(),           
+  //         new MainReactPackage(),
   //     );
   //   }
   // };
@@ -46,6 +47,7 @@ public class MainApplication extends NavigationApplication {
 		new VectorIconsPackage(),
 		new LinearGradientPackage(),
     new ReactVideoPackage(),
+    new SplashScreenReactPackage(),
 		new ReactNativeConfigPackage()
     );
   }
