@@ -2,7 +2,8 @@ import React, { PropTypes, Component } from 'react';
 import {
 	View,
 	ListView,
-	TextInput
+	TextInput,
+	RefreshControl
 } from 'react-native';
 import axios from 'axios';
 import { bindActionCreators } from 'redux';
@@ -13,6 +14,7 @@ import * as moviesActions from './movies.actions';
 import CardThree from './components/CardThree';
 import styles from './styles/Search';
 import { iconsMap } from '../../utils/AppIcons';
+import ProgressBar from '../_global/ProgressBar';
 
 class Search extends Component {
 	constructor(props) {
@@ -21,9 +23,8 @@ class Search extends Component {
 		this.state = {
 			isLoading: true,
 			currentPage: 1,
-			searchResults: {
-				results: []
-			},
+			searchResults:[],
+			isRefreshing: false,
 			query: null
 		};
 
@@ -50,9 +51,11 @@ class Search extends Component {
 					this.setState({
 						nextPage,
 						dataSource,
+						searchResults:this.props.searchResults.items,
 						totalResults,
 						resultsPerPage,
-						isLoading: false
+						isLoading: false,
+						isRefreshing: false
 					});
 				});
 			}
@@ -60,23 +63,23 @@ class Search extends Component {
 	}
 
 	_retrieveNextPage() {		
+		
 		totalItem = this.state.currentPage*this.state.resultsPerPage;				
 		if (totalItem < this.state.totalResults) {
 			this.setState({
 				currentPage: this.state.currentPage + 1
-			});
-		
+			});		
 			nextPage = '&pageToken='+this.state.nextPage;
-
 			this.props.actions.retrieveMoviesSearchResults(this.state.query, 1,nextPage)
 				.then(() => {
-					const data = this.state.searchResults.results;
+					const data = this.state.searchResults;
 					const newData = this.props.searchResults.items;
-					const nextPage = this.props.searchResults.nextPageToken;
+					const nextPage = this.props.searchResults.nextPageToken;					
 					newData.map((item, index) => data.push(item));
 					this.setState({
 						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(this.state.searchResults.results)
+						dataSource: this.state.dataSource.cloneWithRows(this.state.searchResults),
+						isRefreshing: false,
 					});
 				});
 		}
@@ -93,7 +96,7 @@ class Search extends Component {
 				rightButtons: [
 					{
 						id: 'close',
-						icon: iconsMap['ios-arrow-round-down']
+						icon: iconsMap['ios-remove-circle-outline']
 					}
 				]
 			}
@@ -119,6 +122,7 @@ class Search extends Component {
 					dataSource={this.state.dataSource}
 					renderRow={rowData => <CardThree info={rowData} type="search" viewMovie={this._viewMovie} />}
 					renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.seperator} />}
+					renderFooter={() => <View style={{ height: 50 }}><ProgressBar /></View>}
 				/>
 			);
 		} else {

@@ -24,9 +24,7 @@ class MusicList extends Component {
 			isLoading: true,
 			isRefreshing: false,
 			currentPage: 1,
-			list: {
-				results: []
-			}
+			list: []
 		};
 
 		this._viewMovie = this._viewMovie.bind(this);
@@ -69,15 +67,17 @@ class MusicList extends Component {
 			nextPage = '&pageToken='+this.state.nextPage;
 			this.props.actions.retrieveMoviesList(this.props.type, 1,MUSIC_PLAY_LIST_ITEM_U2,nextPage)
 				.then(() => {
-					const data = this.state.list.results;
-					const newData = this.props.list.items;
-					//console.warn(JSON.stringify(newData));
+					const data = this.state.list;
+					const newData = this.props.list.items;					
 					const nextPage = this.props.list.nextPageToken;
-					newData.map((item, index) => data.push(item));
-					this.setState({
-						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
-					});
+					if(newData.length > 0){
+						newData.map((item, index) => data.push(item));						
+						this.setState({
+							nextPage,
+							dataSource: this.state.dataSource.cloneWithRows(this.state.list)
+						});
+					}
+					
 				});
 			}
 		}
@@ -93,7 +93,7 @@ class MusicList extends Component {
 				rightButtons: [
 					{
 						id: 'close',
-						icon: iconsMap['ios-arrow-round-down']
+						icon: iconsMap['ios-remove-circle-outline']
 					}
 				]
 			}

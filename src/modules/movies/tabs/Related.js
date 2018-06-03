@@ -27,9 +27,7 @@ class Related extends React.Component {
 			isLoading: true,
 			isRefreshing: false,
 			currentPage: 1,
-			list: {
-				results: []
-			}
+			list: []
 		};
 
 		this._viewMovie = this._viewMovie.bind(this);
@@ -40,7 +38,6 @@ class Related extends React.Component {
 	componentWillMount() {
 		this._getVideoRelated();
 	}
-
 
 	_getVideoRelated(){
 		this.props.actions.retrieveVideoRelated('video', this.state.currentPage,this.props.movieId)
@@ -73,14 +70,14 @@ class Related extends React.Component {
 			nextPage = '&pageToken='+this.state.nextPage;
 			this.props.actions.retrieveVideoRelated(type, 1,this.props.movieId,nextPage)
 				.then(() => {
-					const data = this.state.list.results;
+					const data = this.state.list;
 					const newData = this.props.list.items;
 					// console.warn(JSON.stringify(newData));
 					const nextPage = this.props.list.nextPageToken;
 					newData.map((item, index) => data.push(item));
 					this.setState({
 						nextPage,
-						dataSource: this.state.dataSource.cloneWithRows(this.state.list.results)
+						dataSource: this.state.dataSource.cloneWithRows(this.state.list)
 					});
 				});
 			}
@@ -97,7 +94,7 @@ class Related extends React.Component {
 				rightButtons: [
 					{
 						id: 'close',
-						icon: iconsMap['ios-arrow-round-down']
+						icon: iconsMap['ios-remove-circle-outline']
 					}
 				]
 			}
@@ -129,8 +126,7 @@ class Related extends React.Component {
 				onEndReachedThreshold={1200}
 				dataSource={this.state.dataSource}
 				renderRow={rowData => <CardThree info={rowData} type="search" viewMovie={this._viewMovie} />}
-				renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.seperator} />}
-				renderFooter={() =>  <View style={styles.progressBar}><ProgressBar /></View> }
+				renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.seperator} />}				
 				refreshControl={ 
 					<RefreshControl
 						refreshing={this.state.isRefreshing}
