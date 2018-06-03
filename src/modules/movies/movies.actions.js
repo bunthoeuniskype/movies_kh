@@ -25,7 +25,7 @@ export function retrieveMoviesGenres() {
 }
 
 // POPULAR
-export function retrievePopularMoviesSuccess(res) {	
+export function retrievePopularMoviesSuccess(res) {		
 	return {
 		type: types.RETRIEVE_POPULAR_MOVIES_SUCCESS,
 		popularMovies: res.data
@@ -34,18 +34,18 @@ export function retrievePopularMoviesSuccess(res) {
 
 export function retrievePopularMovies(getResult=10,nextPage='') {
 	return function (dispatch) {
-		return axios.get(`${YOUTUBE_URL}playlistItems?part=snippet,contentDetails&playlistId=${POPULAR_PLAY_LIST_ITEM_U2}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
+		return axios.get(`${YOUTUBE_URL}playlistItems?part=snippet&playlistId=${POPULAR_PLAY_LIST_ITEM_U2}&key=${YOUTUBE_API_KEY}&maxResults=${getResult}${nextPage}`)
 		.then(res => {
 			dispatch(retrievePopularMoviesSuccess(res));
 		})
 		.catch(error => {
-			console.log('Popular', error); //eslint-disable-line
+			console.warn('Popular', error); //eslint-disable-line
 		});
 	};
 }
 
 // NOW PLAYING
-export function retrieveNowPlayingMoviesSuccess(res) {	
+export function retrieveNowPlayingMoviesSuccess(res) {		
 	return {
 		type: types.RETRIEVE_NOWPLAYING_MOVIES_SUCCESS,
 		nowPlayingMovies: res.data
@@ -55,7 +55,7 @@ export function retrieveNowPlayingMoviesSuccess(res) {
 export function retrieveNowPlayingMovies(query='khmer Movies') {
 	return function (dispatch) {
 		//return axios.get(`${YOUTUBE_URL}search?key=${YOUTUBE_API_KEY}&q=${query}&part=snippet&order=viewCount&maxResults=3&type=video&videoDefinition=high`)
-		return axios.get(`${YOUTUBE_URL}playlistItems?part=snippet,contentDetails&playlistId=${LATEST_PLAY_LIST_ITEM_U2}&key=${YOUTUBE_API_KEY}`)
+		return axios.get(`${YOUTUBE_URL}playlistItems?part=snippet&playlistId=${LATEST_PLAY_LIST_ITEM_U2}&key=${YOUTUBE_API_KEY}`)
 		.then(res => {
 			dispatch(retrieveNowPlayingMoviesSuccess(res));
 		})

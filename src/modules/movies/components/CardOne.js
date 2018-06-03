@@ -19,7 +19,7 @@ const CardOne = ({ info, viewMovie,type }) => {
 			}else{
 				videoId = info.id.videoId;
 			}
-
+			
 	return (
 	<View>
 		<Image source={{ uri: `${(info.snippet.thumbnails.medium.url || info.snippet.thumbnails.default.url)}` }} style={styles.imageBackdrop} />

@@ -17,7 +17,6 @@ const CardTwo = ({ info, viewMovie,type }) => {
 		videoId = info.id.videoId;
 	}
 
-
 	return (
 			<TouchableOpacity activeOpacity={0.8} onPress={viewMovie.bind(this, videoId)}>
 				<View style={styles.cardContainer}>
