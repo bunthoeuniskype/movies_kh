@@ -3,3 +3,5 @@ android/build/
 android/app/build/
 /.env
 android/.gradle/
+/android/.gradle
+/android/app/build
