@@ -26,11 +26,11 @@
     "react-native-linear-gradient": "^2.0.0",
     "react-native-navigation": "1.1.84",
     "react-native-scrollable-tab-view": "^0.7.4",
+    "react-native-splash-screen": "^3.0.7",
     "react-native-swiper": "^1.5.4",
     "react-native-vector-icons": "^4.2.0",
     "react-native-video": "^2.1.1",
     "react-native-video-player": "^0.9.1",
-    "react-native-videoplayer": "^1.2.0",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
