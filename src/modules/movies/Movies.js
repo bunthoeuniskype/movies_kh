@@ -16,10 +16,12 @@ import * as moviesActions from './movies.actions';
 import CardOne from './components/CardOne';
 import CardTwo from './components/CardTwo';
 import ProgressBar from '../_global/ProgressBar';
+import PlatformScreen from '../_global/PlatformScreen';
 import styles from './styles/Movies';
 import { iconsMap } from '../../utils/AppIcons';
 import SplashScreen from 'react-native-splash-screen';
-	
+import { YOUTUBE_API_KEY } from '../../constants/api';
+import {YouTubeStandaloneAndroid} from 'react-native-youtube';
 
 class Movies extends Component {
 	constructor(props) {
@@ -27,12 +29,14 @@ class Movies extends Component {
 
 		this.state = {
 			isLoading: true,
-			isRefreshing: false
+			isRefreshing: false,
+			lightboxMode:false
 		};
 
 		this._viewMovie = this._viewMovie.bind(this);
 		this._onRefresh = this._onRefresh.bind(this);
 		this.props.navigator.setOnNavigatorEvent(this._onNavigatorEvent.bind(this));
+		this._PlayNow = this._PlayNow.bind(this);
 	}
 
 	componentWillMount() {
@@ -96,6 +100,27 @@ class Movies extends Component {
 		});
 	}
 
+
+	_PlayNow(movieId){		
+		// if(PlatformScreen.isPortrait()){
+		// 	this.setState({
+		// 		lightboxMode:true
+		// 	})
+		// }
+		if(movieId !== null){
+			YouTubeStandaloneAndroid.playVideo({
+				  apiKey: YOUTUBE_API_KEY,     // Your YouTube Developer API Key
+				  videoId:  movieId,			// YouTube video ID
+				  autoplay: true,             // Autoplay the video
+				  startTime: 0,             // Starting point of video (in seconds)
+				  lightboxMode:this.state.lightboxMode
+				})
+				  .then(() => console.log('Standalone Player Exited'))
+				  .catch(errorMessage => console.log(errorMessage)
+				);	
+		}
+	}
+
 	_onRefresh() {
 		this.setState({ isRefreshing: true });
 		this._retrieveMovies('isRefreshed');
@@ -153,7 +178,7 @@ class Movies extends Component {
 					showsPagination={false}
 					height={248}>
 					{nowPlayingMovies.items.map(info => (
-						<CardOne key={info.snippet.resourceId.videoId}  type="playlistItems" info={info} viewMovie={this._viewMovie} />
+						<CardOne key={info.snippet.resourceId.videoId}  type="playlistItems" info={info} viewMovie={this._PlayNow} />
 					))}
 				</Swiper>				
 				<View>

@@ -6,7 +6,7 @@ import {
 	ScrollView,
 	Text,
 	ListView,
-	ToastAndroid,
+	ToastAndroid,Button,TouchableOpacity,
 	View, WebView, Platform
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -26,7 +26,9 @@ import Related from './tabs/Related';
 import styles from './styles/Movie';
 import CardOne from './components/CardOne';
 import VideoPlayer from 'react-native-video-player';
-import { TMDB_IMG_URL, YOUTUBE_API_KEY, YOUTUBE_URL } from '../../constants/api';
+import { YOUTUBE_API_KEY, YOUTUBE_URL } from '../../constants/api';
+import YouTube,{YouTubeStandaloneAndroid} from 'react-native-youtube';
+import PlatformScreen from '../_global/PlatformScreen';
 
 class Movie extends Component {
 	constructor(props) {
@@ -49,6 +51,7 @@ class Movie extends Component {
 			video: { width: undefined, height: undefined, duration: undefined },
 		    thumbnailUrl: undefined,
 		    videoUrl: undefined,
+		    lightboxMode:false
 		};
 
 		this._getTabHeight = this._getTabHeight.bind(this);
@@ -62,7 +65,19 @@ class Movie extends Component {
 	}
 
 	componentWillMount() {
-		this._retrieveDetails();		
+		this._retrieveDetails();
+		
+		// if(this.props.movieId !== null){
+		// 	YouTubeStandaloneAndroid.playVideo({
+		// 		  apiKey: YOUTUBE_API_KEY,     // Your YouTube Developer API Key
+		// 		  videoId: 'KVZ-P-ZI6W4',     // YouTube video ID
+		// 		  autoplay: true,             // Autoplay the video
+		// 		  startTime: 120,             // Starting point of video (in seconds)
+		// 		})
+		// 		  .then(() => console.log('Standalone Player Exited'))
+		// 		  .catch(errorMessage => console.warn(errorMessage)
+		// 		);	
+		// }
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -149,6 +164,26 @@ class Movie extends Component {
 		}
 	}
 
+	_PlayNow(movieId){		
+		// if(PlatformScreen.isPortrait()){
+		// 	this.setState({
+		// 		lightboxMode:true
+		// 	})
+		// }
+		if(movieId !== null){
+			YouTubeStandaloneAndroid.playVideo({
+				  apiKey: YOUTUBE_API_KEY,     // Your YouTube Developer API Key
+				  videoId:  movieId,			// YouTube video ID
+				  autoplay: true,             // Autoplay the video
+				  startTime: 0,             // Starting point of video (in seconds)
+				  lightboxMode:this.state.lightboxMode
+				})
+				  .then(() => console.log('Standalone Player Exited'))
+				  .catch(errorMessage => console.log(errorMessage)
+				);	
+		}	
+	}
+
 	render() {
 		const iconStar = <Icon name="md-star" size={16} color="#F5B642" />;
 		const { details } = this.props;
@@ -157,8 +192,7 @@ class Movie extends Component {
 		//const videoUrl = 'https://gcs-vimeo.akamaized.net/exp=1527849554~acl=%2A%2F587282651.mp4%2A~hmac=6d46e0211e9f55781cb02d1ba23e80fafe2c8ce9270664b0f8f353ce202c4c9d/vimeo-prod-skyfire-std-us/01/971/7/179859217/587282651.mp4';
 		const videoUrl = 'https://www.youtube.com/embed/'+info.id;
 		//console.warn(JSON.stringify(info.contentDetails.duration))
-		//console.warn(ytDurationToSeconds('PT4M59S'));
-
+	
 		let height;
 		if (this.state.tab === 0) height = this.state.infoTabHeight;
 		if (this.state.tab === 1) height = this.state.castsTabHeight;
@@ -183,15 +217,24 @@ class Movie extends Component {
 						/>
 					}>
 				<View>
-				 <VideoPlayer
-				          endWithThumbnail
-				          thumbnail={{ uri: `${info.snippet.thumbnails.medium.url}` }}
-				          video={{ uri: `${videoUrl}` }}		
-				          videoWidth={this.state.video.width}
-				          videoHeight={this.state.video.height}
-				          duration={this.state.video.duration}		        
-				          ref={r => this.player = r}
-				        />
+					<Swiper
+						style={styles.swiper}
+						autoplay
+						autoplayTimeout={4}
+						showsPagination={false}
+						height={248}
+						loop
+						index={5}>
+						<View key={info.id}>
+							<Image source={{ uri: `${info.snippet.thumbnails.medium.url}` }} style={styles.imageBackdrop} />
+							<LinearGradient colors={['rgba(0, 0, 0, 0.2)', 'rgba(0,0,0, 0.2)', 'rgba(0,0,0, 0.7)']} style={styles.linearGradient} />
+						</View>						
+					</Swiper>	
+					<TouchableOpacity activeOpacity={0.9} onPress={()=>this._PlayNow(info.id)}>
+						<View style={styles.viewButton}>
+							<Text style={styles.viewButtonText}>Play now</Text>
+						</View>
+					</TouchableOpacity>				     
 					<View style={styles.contentContainer}>
 						<ScrollableTabView
 							onChangeTab={this._onChangeTab}

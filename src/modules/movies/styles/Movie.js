@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
 		marginLeft: 5,
 		fontSize: 12
 	},
-	  video: {
+	video: {
 	    position: 'absolute',
 	    top: 0, left: 0, right: 0, bottom: 0,
 	    alignItems: 'center',
@@ -108,7 +108,20 @@ const styles = StyleSheet.create({
 	    left: 0,
 	    bottom: 0,
 	    right: 0,
-  	}
+  	},
+  	viewButton: {
+		justifyContent: 'center',
+		padding: 10,
+		borderRadius: 3,
+		backgroundColor: '#EA0000',
+		width: '100%',
+		height: 30,
+		marginTop: 10,
+		alignItems:'center'
+	},
+	viewButtonText: {
+		color: 'white'
+	}
 });
 
 export default styles;

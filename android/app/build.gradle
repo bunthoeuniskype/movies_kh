@@ -100,6 +100,12 @@ android {
 			abiFilters   "armeabi","armeabi-v7a","x86"
         }
     }
+
+//     lintOptions {
+//        abortOnError false
+//        disable 'ValidFragment'
+//    }
+
     signingConfigs {
         release {
             storeFile file(MYAPP_RELEASE_STORE_FILE)
@@ -147,6 +153,7 @@ dependencies {
     compile project(':react-native-linear-gradient')
 	compile project(':react-native-config')
     compile project(':react-native-video')
+    compile project(':react-native-youtube')
     compile project(':react-native-splash-screen')
 }
 

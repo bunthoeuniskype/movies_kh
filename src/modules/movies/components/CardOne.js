@@ -53,7 +53,7 @@ class CardOne extends Component {
 							<Text style={styles.cardDescription} numberOfLines={3}>
 								{info.snippet.description}
 							</Text>
-							<TouchableOpacity activeOpacity={0.9} onPress={viewMovie.bind(this,videoId)}>
+							<TouchableOpacity activeOpacity={0.9} onPress={()=>viewMovie.bind(this,videoId)}>
 								<View style={styles.viewButton}>
 									<Text style={styles.viewButtonText}>Play now</Text>
 								</View>

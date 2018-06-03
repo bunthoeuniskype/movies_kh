@@ -5,6 +5,7 @@ import android.util.Log;
 import android.support.annotation.NonNull;
 
 import com.facebook.react.ReactApplication;
+import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -48,6 +49,7 @@ public class MainApplication extends NavigationApplication {
 		new LinearGradientPackage(),
     new ReactVideoPackage(),
     new SplashScreenReactPackage(),
+    new ReactNativeYouTube(),
 		new ReactNativeConfigPackage()
     );
   }
