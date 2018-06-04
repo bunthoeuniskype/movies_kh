@@ -20,8 +20,8 @@ import PlatformScreen from '../_global/PlatformScreen';
 import styles from './styles/Movies';
 import { iconsMap } from '../../utils/AppIcons';
 import SplashScreen from 'react-native-splash-screen';
-import { YOUTUBE_API_KEY } from '../../constants/api';
-import {YouTubeStandaloneAndroid} from 'react-native-youtube';
+// import { YOUTUBE_API_KEY } from '../../constants/api';
+// import {YouTubeStandaloneAndroid} from 'react-native-youtube';
 
 class Movies extends Component {
 	constructor(props) {
@@ -107,18 +107,18 @@ class Movies extends Component {
 		// 		lightboxMode:true
 		// 	})
 		// }
-		if(movieId !== null){
-			YouTubeStandaloneAndroid.playVideo({
-				  apiKey: YOUTUBE_API_KEY,     // Your YouTube Developer API Key
-				  videoId:  movieId,			// YouTube video ID
-				  autoplay: true,             // Autoplay the video
-				  startTime: 0,             // Starting point of video (in seconds)
-				  lightboxMode:this.state.lightboxMode
-				})
-				  .then(() => console.log('Standalone Player Exited'))
-				  .catch(errorMessage => console.log(errorMessage)
-				);	
-		}
+		// if(movieId !== null){
+		// 	YouTubeStandaloneAndroid.playVideo({
+		// 		  apiKey: YOUTUBE_API_KEY,     // Your YouTube Developer API Key
+		// 		  videoId:  movieId,			// YouTube video ID
+		// 		  autoplay: true,             // Autoplay the video
+		// 		  startTime: 0,             // Starting point of video (in seconds)
+		// 		  lightboxMode:this.state.lightboxMode
+		// 		})
+		// 		  .then(() => console.log('Standalone Player Exited'))
+		// 		  .catch(errorMessage => console.log(errorMessage)
+		// 		);	
+		// }
 	}
 
 	_onRefresh() {
@@ -178,7 +178,7 @@ class Movies extends Component {
 					showsPagination={false}
 					height={248}>
 					{nowPlayingMovies.items.map(info => (
-						<CardOne key={info.snippet.resourceId.videoId}  type="playlistItems" info={info} viewMovie={this._PlayNow} />
+						<CardOne key={info.snippet.resourceId.videoId}  type="playlistItems" info={info} viewMovie={this._viewMovie} />
 					))}
 				</Swiper>				
 				<View>
